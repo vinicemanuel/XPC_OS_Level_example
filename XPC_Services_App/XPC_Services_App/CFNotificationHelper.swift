@@ -11,9 +11,6 @@ import CoreFoundation
 class CFNotificationHelper: NSObject  {
     @objc static public let shared = CFNotificationHelper()
     
-    static let notificationFinishID = "WaveFileSyncNotificationFinishID"
-    static let notificationProgressID = "WaveFileSyncNotificationProgressID"
-    
     private override init() {
 
     }

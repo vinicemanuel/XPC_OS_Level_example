@@ -11,21 +11,25 @@ class XPC_Services_with_Update_Extension: XPC_Services_with_Update_ExtensionProt
     
     var listener: ListenerDataProtocol?
     
+    let notificationID = UUID().uuidString
+    
     func startRandonColor() {
         print("start")
         
         let second = 1000000
         
-        DispatchQueue.main.async {
-            while(true) {
+        DispatchQueue.global(qos: .utility).async {
+            var number = 0
+            while(number < 20) {
                 let red = Float(Int.random(in: 0...100))
                 let blue = Float(Int.random(in: 0...100))
                 let green = Float(Int.random(in: 0...100))
                 let color = MyRGBColor(red: red/100, green: green/100, blue: blue/100)
-                try? self.writeString(stirng: "red:\(red) green:\(green) blue:\(blue)")
+//                try? self.writeString(stirng: "red:\(red) green:\(green) blue:\(blue) ID: \(self.notificationID), number: \(number)")
                 self.sendNotificationProgress(red: red, green: green, blue: blue)
                 self.listener?.sendRGBColor(color: color)
                 usleep(useconds_t(second))
+                number = number + 1
             }
         }
     }
@@ -33,7 +37,8 @@ class XPC_Services_with_Update_Extension: XPC_Services_with_Update_ExtensionProt
     private func sendNotificationProgress(red: Float, green: Float, blue: Float) {
         let dictionary: [String : String] = ["red":   "\(red)",
                                              "green": "\(green)",
-                                             "blue":  "\(blue)"]
+                                             "blue":  "\(blue)",
+                                             "notificationID": notificationID]
         
         CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(),
                                              CFNotificationName("ColorsNotification" as CFString),
@@ -41,20 +46,4 @@ class XPC_Services_with_Update_Extension: XPC_Services_with_Update_ExtensionProt
                                              dictionary as CFDictionary,
                                              true)
     }
-    
-    func writeString(stirng: String) throws {
-        let data = (stirng + "\n").data(using: .utf8)!
-        let fileURL = URL(string: "/Users/viniciusemanuel/Desktop/colors_mycommand.out")!
-        
-             if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
-                 defer {
-                     fileHandle.closeFile()
-                 }
-                 fileHandle.seekToEndOfFile()
-                fileHandle.write(data)
-             }
-             else {
-                try data.write(to: fileURL)
-             }
-         }
 }
