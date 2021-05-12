@@ -47,6 +47,11 @@ struct ContentView: View {
             
             Spacer()
         }
+        .onAppear(perform: {
+            NotificationCenterHelper.shared.startObserve(replay: { (newColor) in
+                self.color = NSColor(red: CGFloat(newColor.red), green: CGFloat(newColor.green), blue: CGFloat(newColor.blue), alpha: 1)
+            })
+        })
         .background(Color(self.color))
         .animation(.default)
     }

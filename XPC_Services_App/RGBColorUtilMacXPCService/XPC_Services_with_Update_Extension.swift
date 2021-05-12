@@ -23,10 +23,23 @@ class XPC_Services_with_Update_Extension: XPC_Services_with_Update_ExtensionProt
                 let green = Float(Int.random(in: 0...100))
                 let color = MyRGBColor(red: red/100, green: green/100, blue: blue/100)
                 try? self.writeString(stirng: "red:\(red) green:\(green) blue:\(blue)")
+                self.sendNotificationProgress(red: red, green: green, blue: blue)
                 self.listener?.sendRGBColor(color: color)
                 usleep(useconds_t(second))
             }
         }
+    }
+    
+    private func sendNotificationProgress(red: Float, green: Float, blue: Float) {
+        let dictionary: [String : String] = ["red":   "\(red)",
+                                             "green": "\(green)",
+                                             "blue":  "\(blue)"]
+        
+        CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(),
+                                             CFNotificationName("ColorsNotification" as CFString),
+                                             nil,
+                                             dictionary as CFDictionary,
+                                             true)
     }
     
     func writeString(stirng: String) throws {

@@ -35,7 +35,6 @@ class ColorUtility {
 extension ColorUtility: ListenerDataProtocol {
     func sendRGBColor(color: MyRGBColor) {
         if let completion = self.completion {
-            print(color)
             completion(color)
         }
     }
