@@ -7,5 +7,10 @@
 
 import Foundation
 
-print("Hello, World!")
+let listener = NSXPCListener(machServiceName: "br.com.RGBColorUtilMacXPCService")
+let delegate = XPC_Services_with_UpdateExtensionDelegate()
+listener.delegate = delegate
+listener.resume()
+RunLoop.main.run()
+
 

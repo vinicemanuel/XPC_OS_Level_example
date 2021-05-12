@@ -27,6 +27,8 @@
 		09A631FB264C0368002FFE5C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A631FA264C0368002FFE5C /* main.swift */; };
 		09A63202264C036F002FFE5C /* XPC_Services_with_Update_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A631DF264C0216002FFE5C /* XPC_Services_with_Update_Protocols.swift */; };
 		09A63206264C0375002FFE5C /* MyRGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFA234C25C9D65F00748026 /* MyRGBColor.swift */; };
+		09A6321A264C0557002FFE5C /* XPC_Services_with_UpdateExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A63219264C0557002FFE5C /* XPC_Services_with_UpdateExtensionDelegate.swift */; };
+		09A6321F264C05AF002FFE5C /* XPC_Services_with_Update_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A6321E264C05AF002FFE5C /* XPC_Services_with_Update_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		09A631F8264C0368002FFE5C /* RGBColorUtilMacXPCService */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RGBColorUtilMacXPCService; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A631FA264C0368002FFE5C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		09A63215264C0462002FFE5C /* RGBColorUtilMacXPCService.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RGBColorUtilMacXPCService.plist; sourceTree = "<group>"; };
+		09A63219264C0557002FFE5C /* XPC_Services_with_UpdateExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPC_Services_with_UpdateExtensionDelegate.swift; sourceTree = "<group>"; };
+		09A6321E264C05AF002FFE5C /* XPC_Services_with_Update_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XPC_Services_with_Update_Extension.swift; sourceTree = "<group>"; };
 		6FFA234C25C9D65F00748026 /* MyRGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRGBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +216,8 @@
 		09A631F9264C0368002FFE5C /* RGBColorUtilMacXPCService */ = {
 			isa = PBXGroup;
 			children = (
+				09A6321E264C05AF002FFE5C /* XPC_Services_with_Update_Extension.swift */,
+				09A63219264C0557002FFE5C /* XPC_Services_with_UpdateExtensionDelegate.swift */,
 				09A63215264C0462002FFE5C /* RGBColorUtilMacXPCService.plist */,
 				09A631FA264C0368002FFE5C /* main.swift */,
 			);
@@ -413,8 +419,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A63206264C0375002FFE5C /* MyRGBColor.swift in Sources */,
+				09A6321A264C0557002FFE5C /* XPC_Services_with_UpdateExtensionDelegate.swift in Sources */,
 				09A63202264C036F002FFE5C /* XPC_Services_with_Update_Protocols.swift in Sources */,
 				09A631FB264C0368002FFE5C /* main.swift in Sources */,
+				09A6321F264C05AF002FFE5C /* XPC_Services_with_Update_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
