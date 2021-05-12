@@ -16,7 +16,7 @@ class ColorUtility {
     func randonColor(replay: @escaping (MyRGBColor)->Void) {
         
         let connection = NSXPCConnection(serviceName: "Lication.XPC-Services-with-Update")
-        connection.remoteObjectInterface = NSXPCInterface(with: XPC_Services_with_Update_ExtensionProcol.self)
+        connection.remoteObjectInterface = NSXPCInterface(with: XPC_Services_with_Update_ExtensionProtocol.self)
         
         connection.exportedInterface = NSXPCInterface(with: ListenerDataProtocol.self)
         connection.exportedObject = self
@@ -25,7 +25,7 @@ class ColorUtility {
         
         let service = connection.remoteObjectProxyWithErrorHandler { (error) in
             print("connection error: ", error.localizedDescription)
-        } as? XPC_Services_with_Update_ExtensionProcol
+        } as? XPC_Services_with_Update_ExtensionProtocol
         
         self.completion = replay
         

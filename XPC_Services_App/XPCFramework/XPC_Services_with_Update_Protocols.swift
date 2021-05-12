@@ -1,5 +1,5 @@
 //
-//  XPC_Services_with_Update_ExtensionProcol.swift
+//  XPC_Services_with_Update_Protocols.swift
 //  XPC_Services_with_Update
 //
 //  Created by Vinicius Emanuel on 07/01/21.
@@ -8,7 +8,7 @@
 import Foundation
 
 //protocol to start the job
-@objc public protocol XPC_Services_with_Update_ExtensionProcol {
+@objc public protocol XPC_Services_with_Update_ExtensionProtocol {
     func startRandonColor()
 }
 
