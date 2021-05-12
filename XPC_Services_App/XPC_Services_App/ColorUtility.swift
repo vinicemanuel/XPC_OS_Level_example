@@ -14,8 +14,7 @@ class ColorUtility {
     var completion: ((MyRGBColor)->Void)?
     
     func randonColor(replay: @escaping (MyRGBColor)->Void) {
-        
-        let connection = NSXPCConnection(serviceName: "Lication.XPC-Services-with-Update")
+        let connection = NSXPCConnection(machServiceName: "br.com.RGBColorUtilMacXPCService")
         connection.remoteObjectInterface = NSXPCInterface(with: XPC_Services_with_Update_ExtensionProtocol.self)
         
         connection.exportedInterface = NSXPCInterface(with: ListenerDataProtocol.self)

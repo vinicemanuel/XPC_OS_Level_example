@@ -4,10 +4,6 @@
 <dict>
 	<key>KeepAlive</key>
 	<true/>
-	<key>StandardOutPath</key>
-	<string>/Users/viniciusemanuel/Desktop/coisas/colors_mycommand.out</string>
-	<key>StandardErrorPath</key>
-	<string>/Users/viniciusemanuel/Desktop/coisas/colors_mycommand.err</string>
 	<key>Program</key>
 	<string>/Users/viniciusemanuel/Desktop/coisas/RGBColorUtilMacXPCService</string>
 	<key>MachServices</key>
