@@ -13,14 +13,14 @@ class NotificationCenterHelper {
     
     private init() { }
     
-    private var replay: ((MyRGBColor)->Void)? = nil
+    private var replays: [String: ((MyRGBColor)->Void)] = [:]
     
-    func startObserve(replay: @escaping (MyRGBColor)->Void) {
-        self.replay = replay
-        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedFinishLocalNotification(notification:)), name: Notification.Name("ColorsNotification"), object: nil)
+    func startObserve(id: String, replay: @escaping (MyRGBColor)->Void) {
+        self.replays[id] = replay
+        NotificationCenter.default.addObserver(self, selector: #selector(self.receivedLocalNotification(notification:)), name: Notification.Name("ColorsNotification"), object: nil)
     }
     
-    @objc private func receivedFinishLocalNotification(notification: Notification) {
+    @objc private func receivedLocalNotification(notification: Notification) {
         if let dictionary = notification.userInfo as? [String: String] {
             
             let formater = NumberFormatter()
@@ -29,12 +29,13 @@ class NotificationCenterHelper {
             let redString = dictionary["red"] ?? ""
             let greenString = dictionary["green"] ?? ""
             let blueString = dictionary["blue"] ?? ""
+            let id = dictionary["notificationID"] ?? ""
             
             let red = formater.number(from: redString)?.floatValue ?? 0
             let green = formater.number(from: greenString)?.floatValue ?? 0
             let blue = formater.number(from: blueString)?.floatValue ?? 0
             
-            replay?(MyRGBColor(red: red/100, green: green/100, blue: blue/100))
+            self.replays[id]?(MyRGBColor(red: red/100, green: green/100, blue: blue/100))
             
             print(dictionary)
         }

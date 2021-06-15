@@ -9,7 +9,7 @@ import Foundation
 
 //protocol to start the job
 @objc public protocol XPC_Services_with_Update_ExtensionProtocol {
-    func startRandonColor()
+    func startRandonColor(id: String)
 }
 
 //protocol to be implemented for hwo will will get the data
